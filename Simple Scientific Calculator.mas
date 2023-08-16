@@ -1,0 +1,733 @@
+﻿//enter what operation the user wants
+//the user enters the number assigned to the operarion wanted
+//the the program detects what number he put
+main, Input
+Store o
+subt one
+Skipcond 400
+Jump test1
+Jump addition
+test1, Load o
+subt two
+Skipcond 400
+Jump test2
+Jump subt
+test2, Load o
+subt three
+Skipcond 400
+Jump test3
+Jump multiplication
+test3, Load o
+subt four
+Skipcond 400
+Jump test4
+Jump div
+test4, Load o
+subt five
+Skipcond 400
+Jump test5
+Jump power
+test5, Load o
+subt six
+Skipcond 400
+Jump test6
+Jump factorial
+test6, Load o
+subt seven
+Skipcond 400
+Jump test8
+Jump maxMin
+test8, Load o
+subt nine
+Skipcond 400
+Jump test9
+Jump detection
+test9, Load o
+subt ten
+Skipcond 400
+Jump main 
+Jump trigonometry
+
+//addition code
+addition, Input
+Store c
+Input
+Store d
+load c
+add d
+store sumResult
+Output
+jump end
+
+//subtraction code
+subt,Input
+Store e
+Input
+Store f
+load e
+Subt f
+store subResult
+Output
+Jump end
+//multiplication code
+multiplication, Input
+Store x
+Input
+Store y
+mult, load w
+add x
+store w
+load y
+subt one
+
+store y
+Skipcond 400
+jump mult
+load w
+store multResult
+output
+Jump end
+//division code
+div, Input
+store a
+Input
+Store b
+if, load a
+Skipcond 800
+jump endif
+then, load a
+Subt b
+Store a
+load z
+add one
+store z
+jump if
+endif, load z
+output
+Jump end
+
+//power
+power,Input / Enter the exponent Store i
+Subt one
+Store Count
+
+Input / Enter the Base
+Store t
+Store i
+Jns Exp
+
+/ Ending the main program
+Load Ans 
+Output 
+Jump end
+
+Exp, Hex 0
+Loop2, Load Count
+    Skipcond 800
+    JumpI Exp
+    JnS Multiplier
+    Load Ans
+    Store t
+    Load Count
+    Subt One
+    Store Count
+    Jump Loop2
+
+/ Start of the subroutine Multiplier
+Multiplier, Hex 0
+    Load Zero
+    Store Ans
+Loop, Load t
+    Skipcond 800
+    JumpI Multiplier
+    Load Ans
+    Add i
+    Store Ans
+    Load t
+    Subt One
+    Store t
+    Jump Loop
+    
+// factorial
+factorial,Input 
+Store Fact 
+Fac, Load Fact 
+Store MulOpA 
+Load Sum 
+Skipcond 800 /This is to prevent multiply wi 
+Load One /Start multiply by One 
+Store MulOpB /Store in MulOpB variable 
+Load Zero 
+Store MulSum 
+Jump Mul 
+FacLoop, Load MulSum 
+Store Sum 
+Load Fact
+Subt One 
+Skipcond 800 
+Jump Finish 
+Store Fact
+Jump Fac 
+Mul, Load MulSum 
+Add MulOpB 
+Store MulSum 
+Load MulOpA 
+Subt One 
+Store MulOpA 
+Skipcond 400 
+Jump Mul 
+Jump FacLoop 
+Finish, Load Sum 
+Output 
+jump end
+
+
+//sort from max to min
+//the user enter 2 numbers and the program will print them in descending order
+
+/max and min
+
+maxMin, input               / get value for p
+        store       p
+        input               / get value for s
+        store       s
+
+Testm1,  subt        p      / acc = s - p
+        skipcond    000     / if negative then p bigger, skip further tests
+        jump        Testm2
+        load        p       / got here if p bigger, print p then s, then done
+        output
+        load        s
+        output
+        jump        Done
+
+Testm2,  skipcond    800     / if positive then s bigger, skip further tests
+        jump        XYEq    / if here then equal, go to XYeq print section
+        load        s       / got here if s bigger, print s then p, then done
+        output
+        load        p       / then print s
+        output
+        jump        Done
+
+XYEq,   load        p      / just print p, then done
+        output
+
+Done,   jump end 
+
+
+//triangle detection
+//the user enters the three angles of the triangle
+//the program will then checck their sum
+detection, Input 
+Store totalAngles 
+Input 
+Add totalAngles 
+Store totalAngles
+Input 
+Add totalAngles
+Store totalAngles 
+subt hundredEighty 
+skipcond 400 //if the sum is 180, the program will print 1
+jump loopNo // if the sum is not 180, the program will print 0
+load one
+Output
+jump end
+
+loopNo, Load zero
+Output
+jump end
+
+//sin/cos/tan
+
+trigonometry, Input
+//first, the user will enter the three sides of the triangle
+Store side1
+Input
+Store side2
+Load one
+output    
+//the angle between side1 and side2 is named 1
+Input
+Store side3
+load two
+output   
+//the angle between side2 and side3 is named 2
+load three
+output  
+//the angle between side3 and side1 is named 3
+
+//then, it will compare between the three sides to find the biggest one, which will be the hypothenuse
+Load side1
+subt side2
+Skipcond 000 // if side 2 is bigger than side 1
+jump check // if side 1 is >side2
+Jump check1
+
+//compare between side 1 and side 3
+
+check,  Load side1 
+subt side3     
+Skipcond 000 //if side 3 is bigger
+Jump hypo
+load side3
+store hypothenuse
+Output
+Jump case3
+
+ //if side 1 is bigger
+hypo,Load side1          
+ Store hypothenuse
+ Output
+ Jump case1
+
+ 
+check1,Load side2
+subt side3
+Skipcond 000 //if side 3 is bigger
+Jump hypo1
+load side3
+store hypothenuse
+Output
+Jump case3
+
+ //if side 2 is bigger
+hypo1, load side2
+ Store hypothenuse
+ Output
+ Jump case2
+ 
+/when the hypothenuse is side 1
+case1, clear
+/the program will detect which angle is chosen
+Input
+Store ang
+subt one
+Skipcond 400
+Jump testAngle1
+Jump angle1
+testAngle1, Load ang
+subt two
+Skipcond 400
+Jump testAngle2
+Jump angle2
+testAngle2, Load ang
+subt three
+Skipcond 400
+Jump end
+Jump angle3
+
+//the user will then choose the angle he wants its sin, cos and tan
+// the program will give him all the results in one time
+//sin
+//divide side 3 which is the opposite side by the hypotenus
+angle1, clear 
+if1, load side3
+Skipcond 800
+jump endif1
+then1, load side3
+Subt hypothenuse
+Store side3
+load sinResult
+add one
+store sinResult
+jump if1
+endif1, load sinResult
+output
+
+//cos
+//divide side 2 which is the adjacent side by the hypotenuse
+if2, load side2
+Skipcond 800
+jump endif2
+then2, load side2
+Subt hypothenuse
+Store side2
+load cosResult
+add one
+store cosResult
+jump if2
+endif2, load cosResult
+output
+
+//tan
+//divide side 3 which is the opposite side by side2 which is the adjacent
+if3, load side3
+Skipcond 800
+jump endif3
+then3, load side3
+Subt side2
+Store side3
+load tanResult
+add one
+store tanResult
+jump if3
+endif3, load tanResult
+output
+jump end
+
+angle2, clear
+//sin
+load one
+output
+
+//cos
+load zero
+output
+
+//tan
+load zero
+Output
+jump end
+
+
+angle3, clear 
+//sin
+if4, load side2
+Skipcond 800
+jump endif4
+then4, load side2
+Subt hypothenuse
+Store side2
+load sinResult
+add one
+store sinResult
+jump if4
+endif4, load sinResult
+output
+
+//cos
+//divide side 3 which is the adjacent side by the hypotenuse
+if5, load side3
+Skipcond 800
+jump endif5
+then5, load side3
+Subt hypothenuse
+Store side3
+load cosResult
+add one
+store cosResult
+jump if5
+endif5, load cosResult
+output
+
+//tan
+//divide side 3 which is the opposite side by side2 which is the adjacent
+if6, load side2
+Skipcond 800
+jump endif6
+then6, load side2
+Subt side3
+Store side2
+load tanResult
+add one
+store tanResult
+jump if6
+endif6, load tanResult
+output
+jump end
+//when the hypothenuse is side 2
+case2, clear
+//the program will detect which angle is chosen
+Input
+Store ang
+subt one
+Skipcond 400
+Jump testAnglee1
+Jump anglee1
+testAnglee1, Load ang
+subt two
+Skipcond 400
+Jump testAnglee2
+Jump anglee2
+testAnglee2, Load ang
+subt three
+Skipcond 400
+Jump end
+Jump anglee3
+ 
+//sin
+//divide side 3 which is the opposite side by the hypotenus
+anglee1, clear 
+if7, load side3
+Skipcond 800
+jump endif7
+then7, load side3
+Subt hypothenuse
+Store side3
+load sinResult
+add one
+store sinResult
+jump if7
+endif7, load sinResult
+output
+ 
+//cos
+//divide side 1 which is the adjacent side by the hypotenuse
+if8, load side1
+Skipcond 800
+jump endif8
+then8, load side1
+Subt hypothenuse
+Store side1
+load cosResult
+add one
+store cosResult
+jump if8
+endif8, load cosResult
+output
+ 
+//tan
+//divide side 3 which is the opposite side by side1 which is the adjacent
+if9, load side3
+Skipcond 800
+jump endif9
+then9, load side3
+Subt side1
+Store side3
+load tanResult
+add one
+store tanResult
+jump if9
+endif9, load tanResult
+output
+jump end
+anglee2, clear 
+//sin
+if10, load side1
+Skipcond 800
+jump endif10
+then10, load side1
+Subt hypothenuse
+Store side1
+load sinResult
+add one
+store sinResult
+jump if10
+endif10, load sinResult
+output
+ 
+//cos
+//divide side 3 which is the adjacent side by the hypotenuse
+if11, load side3
+Skipcond 800
+jump endif11
+then11, load side3
+Subt hypothenuse
+Store side3
+load cosResult
+add one
+store cosResult
+jump if11
+endif11, load cosResult
+output
+ 
+//tan
+//divide side 3 which is the opposite side by side1 which is the adjacent
+if12, load side1
+Skipcond 800
+jump endif12
+then12, load side1
+Subt side3
+Store side1
+load tanResult
+add one
+store tanResult
+jump if12
+endif12, load tanResult
+output
+jump end
+ 
+ 
+anglee3, clear
+//sin
+load one
+output
+ 
+//cos
+load zero
+output
+ 
+//tan
+load zero
+Output
+jump end
+
+//when the hypothenuse is side 3
+case3, clear
+//the program will detect which angle is chosen
+Input
+Store ang
+subt one
+Skipcond 400
+Jump testAngleee1
+Jump angleee1
+testAngleee1, Load ang
+subt two
+Skipcond 400
+Jump testAngleee2
+Jump angleee2
+testAngleee2, Load ang
+subt three
+Skipcond 400
+Jump end
+Jump angleee3
+ 
+//sin
+//divide side 3 which is the opposite side by the hypotenus
+angleee1,clear
+//sin
+load one
+output
+ 
+//cos
+load zero
+output
+ 
+//tan
+load zero
+Output
+jump end
+ 
+ 
+angleee2, clear 
+//sin
+if13, load side1
+Skipcond 800
+jump endif13
+then13, load side1
+Subt hypothenuse
+Store side1
+load sinResult
+add one
+store sinResult
+jump if13
+endif13, load sinResult
+output
+ 
+//cos
+//divide side 2 which is the adjacent side by the hypotenuse
+if14, load side2
+Skipcond 800
+jump endif13
+then14, load side2
+Subt hypothenuse
+Store side2
+load cosResult
+add one
+store cosResult
+jump if14
+endif14, load cosResult
+output
+ 
+//tan
+//divide side 1 which is the opposite side by side2 which is the adjacent
+if15, load side2
+Skipcond 800
+jump endif15
+then15, load side2
+Subt side1
+Store side2
+load tanResult
+add one
+store tanResult
+jump if15
+endif15, load tanResult
+output
+jump end
+ 
+ 
+angleee3,  clear 
+if16, load side2
+Skipcond 800
+jump endif16
+then16, load side2
+Subt hypothenuse
+Store side2
+load sinResult
+add one
+store sinResult
+jump if16
+endif16, load sinResult
+output
+ 
+//cos
+//divide side 1 which is the adjacent side by the hypotenuse
+if17, load side1
+Skipcond 800
+jump endif17
+then17, load side1
+Subt hypothenuse
+Store side1
+load cosResult
+add one
+store cosResult
+jump if17
+endif17, load cosResult
+output
+ 
+//tan
+//divide side 2 which is the opposite side by side1 which is the adjacent
+if18, load side2
+Skipcond 800
+jump endif18
+then18, load side2
+Subt side1
+Store side2
+load tanResult
+add one
+store tanResult
+jump if18
+endif18, load tanResult
+output
+jump end
+
+end, Halt
+a, dec 0
+b, dec 0
+z, dec 0
+Zero, DEC 0
+zero, DEC 0
+one, dec 1
+One, DEC 1 
+two, DEC 2
+three, DEC 3
+four, DEC 4
+five, DEC 5
+six, DEC 6
+seven, DEC 7
+eight, DEC 8
+nine, DEC 9
+ten, DEC 10
+o, DEC 0
+x, DEC  0
+y, DEC 0
+w, DEC 0
+multResult,DEC 0
+sumResult,DEC 0
+d,DEC 0
+c,DEC 0
+t,DEC 0
+count,DEC 0
+hypothenuse, DEC 0
+side1, DEC 0
+side2, DEC 0
+side3, DEC 0
+hundredEighty, DEC 180
+totalAngles, DEC 180
+tanResult,DEC 0
+sinResult,DEC 0
+cosResult,DEC 0
+ang,DEC 0
+Sum, DEC 0 
+MulOpA, DEC 0 
+MulOpB, dec 0
+MulSum, DEC 0
+Fact, dec 0
+p,      dec         0       
+s,      dec         0
+e,      dec         0
+f,      dec         0
+subResult,      dec         0
+Count,      dec         0
+i,      dec         0
+Ans,      dec         0
