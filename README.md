@@ -2,6 +2,9 @@
 
 It's a simple scientific calculator using Marie assembly language.
 The code should run on the Marie simulator: https://marie.js.org/ 
+To use the calculator you can open the Marie simulator and upload the .mas file named "Simple Scientific Calculator",
+OR you can copy the code from the text filed I uploaded and paste it into the Marie simulator.
+### Don't forget to read the instructions carefully!
 
 ## User instructions
 
