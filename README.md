@@ -28,10 +28,9 @@ If you want to get the power of a number, you have to run the program then enter
 
 ### VI.	Factorial
 If you want to get the factorial of a number, you have to run the program then enter ‘6’ as input. You then enter the number you want its factorial, and you will get the result in the output.
-VII.	Max, Min 
+
+### VII.	Max, Min 
 If you want to know the maximum and minimum between two numbers. You have to run the program then enter ‘7’ as input. You then enter the first number and the second number, and the program will first print the bigger number and it will print the smallest one.
-
-
 
 ### VIII.	Triangle Detection 
 If you want to check whether the shape you have is a triangle or not. You have to run the program then enter ‘9’ as input. You then enter the three angles you have, the program will check their sum. If it is 180 then the shape is a triangle, otherwise it’s not a triangle.
