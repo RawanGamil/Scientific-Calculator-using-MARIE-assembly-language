@@ -13,7 +13,8 @@ Notes : - The program can manipulate negative numbers
 
 ### I.	Addition
 If you want to add two numbers, you have to run the program then enter ‘1’ as input. You then enter the first number and the second number, and you will get their sum in the output.
-II.	Subtraction
+
+### II.	Subtraction
 If you want to subtract two numbers, you have to run the program then enter ‘2’ as input. You then enter the first number and the second number, and you will get their difference in the output.
  
 ### III.	Multiplication
